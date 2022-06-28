@@ -1,0 +1,53 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'compareTriplets' function below.
+#
+# The function is expected to return an INTEGER_ARRAY.
+# The function accepts following parameters:
+#  1. INTEGER_ARRAY a
+#  2. INTEGER_ARRAY b
+#
+
+def compareTriplets(a, b):
+    # Write your code here
+    # intialize an empty list to hold the new array
+    new_list = []
+    # initialize points values
+    alice_point = 0
+    bob_point =0
+    # create a loop
+    for k in range(0,len(a)):
+        if a[k] > b[k]:
+            alice_point = alice_point + 1
+        elif b[k] > a[k]:
+            bob_point = bob_point + 1
+        else:
+            continue
+        
+    new_list.append(alice_point)
+    new_list.append(bob_point)
+    return new_list   
+    
+
+    
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    a = list(map(int, input().rstrip().split()))
+
+    b = list(map(int, input().rstrip().split()))
+
+    result = compareTriplets(a, b)
+
+    fptr.write(' '.join(map(str, result)))
+    fptr.write('\n')
+
+    fptr.close()
